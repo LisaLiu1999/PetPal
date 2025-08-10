@@ -1,0 +1,319 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: sans-serif;
+}
+
+/* Account Settings Container */
+.account-settings-container {
+  min-height: 100vh;
+  background-color: #f7f2ea;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Settings Header */
+.settings-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.settings-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #5A3E36;
+  margin-bottom: 0.5rem;
+}
+
+/* Tab Content */
+.tab-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(90, 62, 54, 0.1);
+  overflow: hidden;
+}
+
+/* Section Styles */
+.section {
+  padding: 2.5rem;
+}
+
+/* Section Header - New styling for the header with button */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+
+.section-title h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #5A3E36;
+  margin-bottom: 0.5rem;
+}
+
+.section-description {
+  color: #7A5C4F;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Quick Edit Button - Repositioned */
+.quick-edit-btn {
+  flex-shrink: 0;
+}
+
+.quick-edit-btn button {
+  background-color: #D2691E;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(210, 105, 30, 0.2);
+  white-space: nowrap;
+}
+
+.quick-edit-btn button:hover:not(:disabled) {
+  background-color: #B8661A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+}
+
+.quick-edit-btn button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(204, 204, 204, 0.2);
+}
+
+/* Info Section */
+.info-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: #faf8f4;
+  border-radius: 12px;
+  border: 1px solid rgba(210, 105, 30, 0.1);
+}
+
+.info-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #5A3E36;
+  margin-bottom: 0.5rem;
+}
+
+.info-description {
+  color: #7A5C4F;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Message Styles */
+.message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Form Styles */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #5A3E36;
+}
+
+.form-group input {
+  padding: 1rem;
+  border: 2px solid rgba(210, 105, 30, 0.2);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #5A3E36;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #D2691E;
+  box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.1);
+}
+
+.form-group input:disabled {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+  border-color: rgba(210, 105, 30, 0.1);
+}
+
+/* Form Hint */
+.form-hint {
+  font-size: 0.75rem;
+  color: #7A5C4F;
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+/* Button Styles */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.cancel-btn, .save-btn, .update-password-btn {
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.cancel-btn {
+  background-color: transparent;
+  color: #7A5C4F;
+  border: 2px solid rgba(122, 92, 79, 0.3);
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background-color: rgba(122, 92, 79, 0.1);
+  border-color: #7A5C4F;
+}
+
+.save-btn, .update-password-btn {
+  background-color: #D2691E;
+  color: white;
+}
+
+.save-btn:hover:not(:disabled), .update-password-btn:hover:not(:disabled) {
+  background-color: #B8661A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+}
+
+.save-btn:disabled, .update-password-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(210, 105, 30, 0.3);
+  border-top: 3px solid #D2691E;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .account-settings-container {
+    padding: 1rem;
+  }
+  
+  .settings-header h1 {
+    font-size: 2rem;
+  }
+  
+  .section {
+    padding: 1.5rem;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .quick-edit-btn {
+    align-self: flex-end;
+  }
+  
+  .info-section {
+    padding: 1.5rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+  
+  .cancel-btn, .save-btn, .update-password-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header {
+    text-align: center;
+  }
+  
+  .section-title h2 {
+    font-size: 1.5rem;
+  }
+  
+  .quick-edit-btn button {
+    width: 100%;
+    padding: 1rem;
+  }
+}

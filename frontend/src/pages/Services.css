@@ -1,0 +1,547 @@
+/* Services.css - 修復版本 */
+
+/* Global BG */
+body {
+  background-color: #fffefc;
+}
+
+/* Page wrapper */
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.page-content h1 {
+  text-align: center;
+  color: #a1601a;
+  font: 600 2.5rem/1.3 inherit;
+  margin-bottom: 40px;
+}
+
+/* === 桌面版基礎樣式 (Desktop Default) === */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  width: 100%;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 6px 25px rgba(93, 64, 55, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  border: 10px solid rgba(161, 96, 26, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(93, 64, 55, 0.12);
+  border-color: rgba(161, 96, 26, 0.1);
+}
+
+/* Image container - 修復高度和佈局 */
+.service-image-container {
+  width: 100%;
+  height: 280px;
+  position: relative;
+  padding: 24px;
+  box-sizing: border-box;
+  flex-shrink: 0; /* 防止被壓縮 */
+}
+
+.service-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+/* Circular image - 修復圖片顯示 */
+.service-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #f8f4f0;
+  position: relative;
+  z-index: 2;
+}
+
+.service-image.loaded {
+  opacity: 1;
+}
+
+.service-card:hover .service-image {
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Text content - 修復佈局 */
+.service-content {
+  padding: 0 32px 32px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service-title {
+  margin: 20px 0 10px 0;
+  font: 600 1.5rem/1.3 inherit;
+  color: #5d4037;
+  letter-spacing: -0.02em;
+}
+
+.service-meta {
+  margin-bottom: 20px;
+  color: #7d5a47;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.service-price {
+  font-weight: 800;
+  font-size: larger;
+  text-align: center;
+  color: #a1601a;
+  margin-bottom: 28px;
+}
+
+/* Button */
+.book-now-button {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px 32px;
+  font: 600 1.1rem/1 inherit;
+  color: #fff;
+  background-color: #D2691E;
+  border: 0;
+  border-radius: 30px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(161, 96, 26, 0.25);
+  cursor: pointer;
+  min-height: 52px;
+  position: relative;
+  overflow: hidden;
+  margin-top: auto; /* 推到底部 */
+}
+
+.book-now-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.book-now-button:hover::before {
+  left: 100%;
+}
+
+.book-now-button:hover {
+  background-color: #a96219;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(161, 96, 26, 0.35);
+}
+
+.book-now-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(161, 96, 26, 0.3);
+}
+
+.book-now-button:focus {
+  outline: 3px solid rgba(161, 96, 26, 0.5);
+  outline-offset: 3px;
+}
+
+/* Loading states */
+.image-loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid rgba(161, 96, 26, 0.2);
+  border-top: 4px solid #a1601a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Skeleton loading */
+.skeleton {
+  opacity: 0.7;
+}
+
+.skeleton-shimmer {
+  background-color: #e8ddd4;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.skeleton-circle,
+.skeleton-text,
+.skeleton-button {
+  background: #e8ddd4;
+  border-radius: 4px;
+}
+
+.skeleton-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 24px auto;
+}
+
+.skeleton-title { 
+  height: 22px; 
+  width: 70%; 
+  margin: 20px auto 12px; 
+}
+
+.skeleton-meta { 
+  height: 18px; 
+  width: 50%; 
+  margin: 12px auto 20px; 
+}
+
+.skeleton-price { 
+  height: 20px; 
+  width: 40%; 
+  margin: 0 auto 28px; 
+}
+
+.skeleton-button {
+  height: 52px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+/* Error states */
+.error-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.error-message {
+  display: inline-block;
+  padding: 24px;
+  border-radius: 16px;
+  background: #fdf2f8;
+  border: 1px solid #f9a8d4;
+  color: #be185d;
+  font-weight: 500;
+}
+
+.retry-button {
+  margin-top: 16px;
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: 0;
+  background: #a1601a;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.retry-button:hover {
+  background: #8b5018;
+  transform: translateY(-2px);
+}
+
+/* === TABLET (768px - 1024px) === */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .page-content {
+    padding: 32px 20px;
+  }
+
+  .page-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 32px;
+  }
+
+  .services-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .service-image-container {
+    height: 240px;
+    padding: 20px;
+  }
+
+  .service-image {
+    width: 170px;
+    height: 170px;
+  }
+
+  .service-content {
+    padding: 0 28px 28px;
+  }
+
+  .service-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .service-meta {
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+
+  .service-price {
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+  }
+
+  .book-now-button {
+    padding: 14px 28px;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  .skeleton-circle {
+    width: 170px;
+    height: 170px;
+    margin: 20px auto;
+  }
+
+  .skeleton-button {
+    height: 48px;
+  }
+
+  /* 平板觸控優化 */
+  .service-card:hover {
+    transform: none;
+    box-shadow: 0 6px 25px rgba(93, 64, 55, 0.08);
+  }
+
+  .service-card:hover .service-image {
+    transform: none;
+  }
+
+  .book-now-button:hover {
+    transform: none;
+    background-color: #D2691E;
+  }
+
+  .book-now-button:active {
+    background-color: #a96219;
+    transform: scale(0.98);
+  }
+}
+
+/* === PHONE (0px - 767px) === */
+@media (max-width: 767px) {
+  .page-content {
+    padding: 20px 16px;
+  }
+
+  .page-content h1 {
+    font-size: 1.9rem;
+    margin-bottom: 24px;
+  }
+
+  .services-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .service-card {
+    border-radius: 16px;
+  }
+
+  .service-image-container {
+    height: 200px;
+    padding: 20px;
+  }
+
+  .service-image {
+    width: 140px;
+    height: 140px;
+    border-width: 4px;
+  }
+
+  .service-content {
+    padding: 0 24px 24px;
+  }
+
+  .service-title {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  .service-meta {
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+
+  .service-price {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .book-now-button {
+    padding: 14px 24px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    min-height: 48px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .skeleton-circle {
+    width: 140px;
+    height: 140px;
+    margin: 20px auto;
+  }
+
+  .skeleton-button {
+    height: 48px;
+    border-radius: 12px;
+  }
+
+  /* 手機觸控優化 */
+  .service-card:hover {
+    transform: none;
+    box-shadow: 0 6px 25px rgba(93, 64, 55, 0.08);
+  }
+
+  .service-card:hover .service-image {
+    transform: none;
+  }
+
+  .book-now-button:hover {
+    transform: none;
+    background-color: #D2691E;
+  }
+
+  .book-now-button:active {
+    background-color: #a96219;
+    transform: scale(0.98);
+  }
+}
+
+/* === 通用優化 === */
+.service-title,
+.service-meta,
+.service-price {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* 添加平滑滾動 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 改善選擇體驗 */
+*::selection {
+  background-color: rgba(161, 96, 26, 0.2);
+  color: #5d4037;
+}
+
+/* === 可訪問性優化 === */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .book-now-button::before {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .service-card {
+    border: 2px solid #5d4037;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .book-now-button {
+    border: 2px solid #D2691E;
+    background-color: #D2691E;
+  }
+
+  .service-image {
+    border-color: #5d4037;
+    border-width: 3px;
+  }
+}
+
+/* 暗色模式支援 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+  }
+  
+  .service-card {
+    background: #2d2d2d;
+    color: #e0e0e0;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    border-color: rgba(161, 96, 26, 0.15);
+  }
+  
+  .service-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  }
+  
+  .service-title {
+    color: #d4b896;
+  }
+  
+  .service-meta {
+    color: #b8a690;
+  }
+  
+  .page-content h1 {
+    color: #d4b896;
+  }
+
+  .book-now-button {
+    background-color: #D2691E;
+    box-shadow: 0 6px 20px rgba(210, 105, 30, 0.3);
+  }
+
+  .book-now-button:hover {
+    background-color: #a96219;
+    box-shadow: 0 10px 30px rgba(210, 105, 30, 0.4);
+  }
+
+  .service-image {
+    border-color: rgba(212, 184, 150, 0.3);
+  }
+}
